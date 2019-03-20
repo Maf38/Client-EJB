@@ -43,11 +43,11 @@ public class ClientEJB {
             // et jamais l’EJB session lui-même
             ControleurRemote leProxy = (ControleurRemote) ctx.lookup("ejb.ControleurRemote");
             
-            System.out.println( leProxy.convertir("Yen", "Livre", 1110) );
+            //System.out.println( leProxy.convertir("Yen", "Livre", 1110) );
          
             //utiliser
             String result;
-            /*result = leProxy.hello();
+            result = leProxy.hello();
             System.out.println("result=" + result);
                    
             
@@ -69,20 +69,20 @@ public class ClientEJB {
                 switch (operateur) {
                     case '*':
                         resultat = leProxy.multiplie(operande1, operande2);
-                        continu = Dialogue.veutContinuer();
+                    
                         break;
                     case '+':
                         resultat = leProxy.plus(operande1, operande2);
-                        continu = Dialogue.veutContinuer();
+                  
                         break;
                     case '-':
                         resultat = leProxy.moins(operande1, operande2);
-                        continu = Dialogue.veutContinuer();
+                        
                         break;
                     case '/':
                         if (operande2 != 0) {
                             resultat = leProxy.divise(operande1, operande2);;
-                            continu = Dialogue.veutContinuer();
+                           
                         } else {
                             succes = false;
                             resultat=0;
@@ -90,9 +90,11 @@ public class ClientEJB {
                         break;
                 }
                 
-                        System.out.println("Le résultat du calcul est: "+resultat); 
+                        System.out.println("Le résultat du calcul est: "+resultat);
+                        System.out.println(resultat+"  Yen valent "+ leProxy.convertir("Yen", "Livre", resultat)+" Livre");
                         
-                }while (continu);*/
+                        continu = Dialogue.veutContinuer();
+                }while (continu);
             
         
         } catch (NamingException ex) {
